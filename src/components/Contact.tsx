@@ -76,7 +76,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative z-10 pt-6 pb-28 px-4">
+    <section id="contact" className="relative z-10 pt-12 pb-28 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
         <motion.div
