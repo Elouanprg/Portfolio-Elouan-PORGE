@@ -3,11 +3,9 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Send, CheckCircle, AlertCircle } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
-// --- EmailJS config ---
-// Crée un compte sur https://www.emailjs.com puis remplace ces valeurs :
-const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
-const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+const EMAILJS_SERVICE_ID = "service_3cye2bh";
+const EMAILJS_TEMPLATE_ID = "template_g7oi1fk";
+const EMAILJS_PUBLIC_KEY = "fmeyPs2eDvAsYLJja";
 
 const contactLinks = [
   {
