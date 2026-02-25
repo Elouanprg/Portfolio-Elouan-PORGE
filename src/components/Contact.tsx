@@ -1,5 +1,13 @@
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Send, CheckCircle, AlertCircle } from "lucide-react";
+import emailjs from "@emailjs/browser";
+
+// --- EmailJS config ---
+// Crée un compte sur https://www.emailjs.com puis remplace ces valeurs :
+const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
+const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
 
 const contactLinks = [
   {
@@ -41,6 +49,34 @@ const contactLinks = [
 ];
 
 export default function Contact() {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [sending, setSending] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+
+    setSending(true);
+    setStatus("idle");
+
+    try {
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        EMAILJS_PUBLIC_KEY
+      );
+      setStatus("success");
+      formRef.current.reset();
+    } catch {
+      setStatus("error");
+    } finally {
+      setSending(false);
+      setTimeout(() => setStatus("idle"), 5000);
+    }
+  };
+
   return (
     <section id="contact" className="relative z-10 py-28 px-4">
       <div className="max-w-4xl mx-auto">
@@ -105,6 +141,112 @@ export default function Contact() {
             </motion.a>
           ))}
         </div>
+
+        {/* Contact Form - liquid glass */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-12 max-w-3xl mx-auto"
+        >
+          <div className="liquid-glass rounded-2xl p-7 md:p-10">
+            <h3 className="text-[20px] font-bold text-white font-manrope mb-2 relative z-10">
+              Envoyez-moi un message
+            </h3>
+            <p className="text-[14px] text-white/40 font-inter-tight mb-8 relative z-10">
+              Je vous répondrai dans les plus brefs délais.
+            </p>
+
+            <form ref={formRef} onSubmit={handleSubmit} className="relative z-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label className="block text-[12px] font-semibold text-white/30 uppercase tracking-wider font-inter-tight mb-2">
+                    Nom
+                  </label>
+                  <input
+                    type="text"
+                    name="from_name"
+                    required
+                    placeholder="Votre nom"
+                    className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 text-[14px] text-white/90 font-inter-tight placeholder:text-white/20 outline-none transition-all duration-300 focus:border-blue-400/50 focus:bg-white/[0.06] focus:shadow-[0_0_20px_-5px_rgba(96,165,250,0.15)]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[12px] font-semibold text-white/30 uppercase tracking-wider font-inter-tight mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    name="from_email"
+                    required
+                    placeholder="votre@email.com"
+                    className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 text-[14px] text-white/90 font-inter-tight placeholder:text-white/20 outline-none transition-all duration-300 focus:border-blue-400/50 focus:bg-white/[0.06] focus:shadow-[0_0_20px_-5px_rgba(96,165,250,0.15)]"
+                  />
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <label className="block text-[12px] font-semibold text-white/30 uppercase tracking-wider font-inter-tight mb-2">
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  required
+                  rows={5}
+                  placeholder="Votre message..."
+                  className="w-full bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 text-[14px] text-white/90 font-inter-tight placeholder:text-white/20 outline-none transition-all duration-300 focus:border-blue-400/50 focus:bg-white/[0.06] focus:shadow-[0_0_20px_-5px_rgba(96,165,250,0.15)] resize-none"
+                />
+              </div>
+
+              <div className="flex items-center gap-4">
+                <motion.button
+                  type="submit"
+                  disabled={sending}
+                  whileHover={{ scale: 1.03, boxShadow: "0 8px 40px rgba(255,255,255,0.15)" }}
+                  whileTap={{ scale: 0.97 }}
+                  className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-white text-[#050505] font-cabin font-semibold text-[15px] rounded-full shadow-lg shadow-white/10 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {sending ? (
+                    <>
+                      <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" className="opacity-20" />
+                        <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                      </svg>
+                      Envoi...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={16} />
+                      Envoyer
+                    </>
+                  )}
+                </motion.button>
+
+                {status === "success" && (
+                  <motion.span
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="flex items-center gap-2 text-[14px] text-emerald-400 font-inter-tight"
+                  >
+                    <CheckCircle size={16} />
+                    Message envoyé !
+                  </motion.span>
+                )}
+                {status === "error" && (
+                  <motion.span
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="flex items-center gap-2 text-[14px] text-red-400 font-inter-tight"
+                  >
+                    <AlertCircle size={16} />
+                    Erreur, réessayez.
+                  </motion.span>
+                )}
+              </div>
+            </form>
+          </div>
+        </motion.div>
 
         {/* Footer */}
         <motion.div
