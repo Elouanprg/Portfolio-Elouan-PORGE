@@ -16,7 +16,7 @@ const formations = [
 
 export default function Formation() {
   return (
-    <section id="formation" className="relative z-10 py-12 px-4">
+    <section id="formation" className="relative z-10 py-20 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
         <motion.div
