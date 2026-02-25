@@ -8,7 +8,6 @@ import {
   RefreshCw,
   ShoppingCart,
   ChevronDown,
-  Dribbble,
   Music,
   Plane,
   Monitor,
@@ -137,15 +136,41 @@ const tools = [
   },
 ];
 
+function RugbyBall({ size = 24, className = "" }: { size?: number; className?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
+      <ellipse cx="12" cy="12" rx="10" ry="6" transform="rotate(-35 12 12)" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M8.5 8.5L15.5 15.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M9 12.5L11.5 15" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+      <path d="M12.5 9L15 11.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function SoccerBall({ size = 24, className = "" }: { size?: number; className?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
+      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M12 2L14 7H10L12 2Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
+      <path d="M12 22L14 17H10L12 22Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
+      <path d="M2.5 9L7 10L5.5 6L2.5 9Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
+      <path d="M21.5 9L17 10L18.5 6L21.5 9Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
+      <path d="M4.5 18L7 14L5 17L4.5 18Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
+      <path d="M19.5 18L17 14L19 17L19.5 18Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
+      <polygon points="10,7 14,7 16,11 12,14 8,11" stroke="currentColor" strokeWidth="1.3" fill="currentColor" fillOpacity="0.15" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 const hobbies = [
   {
-    icon: Dribbble,
+    icon: RugbyBall,
     label: "Rugby",
     sub: "7 ans à Pessac Rugby",
     color: "text-orange-400",
   },
   {
-    icon: Dribbble,
+    icon: SoccerBall,
     label: "Football",
     sub: "5 ans au SPUC",
     color: "text-emerald-400",
@@ -165,7 +190,7 @@ const hobbies = [
   {
     icon: Plane,
     label: "Voyages",
-    sub: "Grèce, Espagne...",
+    sub: "Grèce, Albanie...",
     color: "text-cyan-400",
   },
 ];

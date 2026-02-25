@@ -14,8 +14,8 @@ export default function Hero() {
         transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         className="relative mb-10"
       >
-        {/* Container x1.3 */}
-        <div className="relative" style={{ width: "412px", height: "494px" }}>
+        {/* Container — scaled down on mobile */}
+        <div className="relative scale-[0.7] sm:scale-[0.85] md:scale-100 origin-bottom" style={{ width: "412px", height: "494px" }}>
           {/* Glass circle - decorative background */}
           <div
             className="absolute left-1/2 -translate-x-1/2 bottom-0 rounded-full glass-circle"

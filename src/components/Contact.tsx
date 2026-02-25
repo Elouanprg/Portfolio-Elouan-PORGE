@@ -122,7 +122,7 @@ export default function Contact() {
               className="liquid-glass liquid-glass-interactive rounded-2xl p-6 group text-center"
             >
               <div
-                className={`${contact.color} mx-auto mb-4 opacity-60 group-hover:opacity-100 transition-opacity duration-300 relative z-10`}
+                className={`${contact.color} flex justify-center mb-4 opacity-60 group-hover:opacity-100 transition-opacity duration-300 relative z-10`}
               >
                 {contact.icon}
               </div>
