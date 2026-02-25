@@ -30,7 +30,7 @@ export default function Hero() {
           {/* Photo — single image with CSS mask */}
           <div className="absolute inset-0 z-10 photo-mask">
             <img
-              src="/Design_sans_titre__1_-removebg-preview.png"
+              src={`${import.meta.env.BASE_URL}Design_sans_titre__1_-removebg-preview.png`}
               alt="Elouan Porge"
               className="absolute left-1/2 -translate-x-1/2"
               style={{ bottom: "0", width: "371px", height: "auto" }}

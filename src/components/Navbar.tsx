@@ -37,7 +37,7 @@ export default function Navbar() {
           className="font-manrope font-extrabold text-[17px] tracking-tight text-white flex items-center gap-2.5 relative z-10"
         >
           <img
-            src="/logo.png"
+            src={`${import.meta.env.BASE_URL}logo.png`}
             alt="EP Logo"
             className="shrink-0 rounded-full"
             style={{ width: "38px", height: "38px", objectFit: "cover" }}
