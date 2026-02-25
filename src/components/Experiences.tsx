@@ -204,7 +204,7 @@ function ExperienceCard({ exp }: { exp: (typeof experiences)[0] }) {
 
 export default function Experiences() {
   return (
-    <section id="experiences" className="relative z-10 pt-28 pb-16 px-4">
+    <section id="experiences" className="relative z-10 pt-28 pb-6 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
         <motion.div

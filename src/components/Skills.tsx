@@ -259,7 +259,7 @@ function ToolCard({ tool }: { tool: (typeof tools)[0] }) {
 
 export default function Skills() {
   return (
-    <section id="competences" className="relative z-10 pt-12 pb-28 px-4">
+    <section id="competences" className="relative z-10 pt-6 pb-28 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
         <motion.div
