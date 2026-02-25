@@ -96,8 +96,7 @@ export default function Hero() {
         transition={{ duration: 0.6, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
         className="mt-4 text-[15px] md:text-[17px] text-gray-400 max-w-lg font-manrope leading-relaxed"
       >
-        Étudiant en 2ème année de BUT Techniques de Commercialisation à l'IUT de
-        Bordeaux, passionné par le digital et l'innovation.
+        Étudiant en 2ème année de BUT Techniques de Commercialisation à l'IUT de Bordeaux, passionné par le digital et l'innovation.
       </motion.p>
 
       {/* Location */}
