@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown, MapPin } from "lucide-react";
+import { ArrowDown, MapPin, Download } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -15,7 +15,7 @@ export default function Hero() {
         className="relative mb-10"
       >
         {/* Container — scaled down on mobile */}
-        <div className="relative scale-[0.7] sm:scale-[0.85] md:scale-100 origin-bottom" style={{ width: "412px", height: "494px" }}>
+        <div className="relative scale-[0.62] translate-x-2 sm:scale-[0.85] sm:translate-x-0 md:scale-100 origin-bottom" style={{ width: "412px", height: "494px" }}>
           {/* Glass circle - decorative background */}
           <div
             className="absolute left-1/2 -translate-x-1/2 bottom-0 rounded-full glass-circle"
@@ -131,12 +131,14 @@ export default function Hero() {
           Me contacter
         </motion.a>
         <motion.a
-          href="#experiences"
+          href={`${import.meta.env.BASE_URL}cv-elouan-porge.pdf`}
+          download
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.98 }}
-          className="liquid-glass liquid-glass-interactive inline-flex items-center justify-center px-8 py-3.5 text-white/80 font-cabin font-medium text-[16px] rounded-full relative"
+          className="liquid-glass liquid-glass-interactive inline-flex items-center justify-center gap-2 px-8 py-3.5 text-white/80 font-cabin font-medium text-[16px] rounded-full relative"
         >
-          <span className="relative z-10">Voir mon parcours</span>
+          <Download size={18} className="relative z-10" />
+          <span className="relative z-10">Télécharger mon CV</span>
         </motion.a>
       </motion.div>
 
