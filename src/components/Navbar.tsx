@@ -30,6 +30,7 @@ export default function Navbar() {
         className={`relative rounded-full px-5 py-3 flex items-center justify-between transition-all duration-700 liquid-glass-strong liquid-shimmer ${
           scrolled ? "shadow-[0_12px_48px_-12px_rgba(0,0,0,0.7)]" : ""
         }`}
+        style={scrolled ? { background: "linear-gradient(135deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.4) 100%)" } : undefined}
       >
         {/* Logo */}
         <a
