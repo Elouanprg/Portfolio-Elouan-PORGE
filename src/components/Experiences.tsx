@@ -149,15 +149,14 @@ function ExperienceCard({ exp }: { exp: (typeof experiences)[0] }) {
         style={{ transformOrigin: "top center", transformStyle: "preserve-3d" }}
         className="liquid-glass-tint rounded-2xl p-6 md:p-7 transition-all duration-500 group relative"
       >
-        {/* Peel corner */}
+        {/* Photos button */}
         <button
           onClick={() => setPeeled(!peeled)}
-          className="absolute bottom-0 right-0 z-20 cursor-pointer"
-          title="Voir les photos"
+          className="absolute bottom-4 right-4 z-20 cursor-pointer liquid-glass liquid-glass-interactive rounded-full px-4 py-2 flex items-center gap-2 hover:scale-105 active:scale-95 transition-transform duration-200"
+          style={{ border: "1px solid rgba(96, 165, 250, 0.25)", boxShadow: "0 0 12px rgba(96,165,250,0.15)" }}
         >
-          <div className="peel-corner">
-            <Camera size={12} className="absolute bottom-2 right-2 text-blue-300/60" />
-          </div>
+          <Camera size={14} className="text-blue-400" />
+          <span className="text-[12px] font-semibold text-blue-300/90 font-inter-tight relative z-10">Photos</span>
         </button>
 
         <div className="flex flex-wrap items-start justify-between gap-3 mb-3 relative z-10">
