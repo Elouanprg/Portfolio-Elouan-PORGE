@@ -149,14 +149,18 @@ function ExperienceCard({ exp }: { exp: (typeof experiences)[0] }) {
         style={{ transformOrigin: "top center", transformStyle: "preserve-3d" }}
         className="liquid-glass-tint rounded-2xl p-6 md:p-7 transition-all duration-500 group relative"
       >
-        {/* Photos button */}
+        {/* Floating photo indicator */}
         <button
           onClick={() => setPeeled(!peeled)}
-          className="absolute bottom-4 right-4 z-20 cursor-pointer liquid-glass liquid-glass-interactive rounded-full px-4 py-2 flex items-center gap-2 hover:scale-105 active:scale-95 transition-transform duration-200"
-          style={{ border: "1px solid rgba(96, 165, 250, 0.25)", boxShadow: "0 0 12px rgba(96,165,250,0.15)" }}
+          className="absolute -top-3 -right-3 z-20 cursor-pointer w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 active:scale-95 transition-transform duration-200 animate-pulse"
+          style={{
+            background: "radial-gradient(circle, rgba(96,165,250,0.25) 0%, rgba(96,165,250,0.08) 70%)",
+            border: "1px solid rgba(96,165,250,0.35)",
+            boxShadow: "0 0 16px rgba(96,165,250,0.3), 0 0 32px rgba(96,165,250,0.1)",
+          }}
+          title="Voir les photos"
         >
-          <Camera size={14} className="text-blue-400" />
-          <span className="text-[12px] font-semibold text-blue-300/90 font-inter-tight relative z-10">Photos</span>
+          <span className="text-[13px] font-bold text-blue-300">{exp.photos.length}</span>
         </button>
 
         <div className="flex flex-wrap items-start justify-between gap-3 mb-3 relative z-10">
