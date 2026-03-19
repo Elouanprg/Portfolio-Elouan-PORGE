@@ -229,7 +229,7 @@ body {
     rgba(255, 255, 255, 0.15) 100%
   );
   border-top-left-radius: 16px;
-  clip-path: polygon(100% 0%, 0% 100%, 100% 100%);
+  clip-path: path("M 44 0 Q 0 0 0 44 L 44 44 Z");
   animation: peel-breathe 4s ease-in-out infinite;
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   box-shadow: -2px -2px 8px rgba(0, 0, 0, 0.3);
