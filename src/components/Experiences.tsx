@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Briefcase, Camera, X } from "lucide-react";
+import { motion } from "framer-motion";
+import { Briefcase } from "lucide-react";
 
 const experiences = [
   {
@@ -87,117 +86,60 @@ const itemVariants = {
 };
 
 function ExperienceCard({ exp }: { exp: (typeof experiences)[0] }) {
-  const [peeled, setPeeled] = useState(false);
-
   return (
-    <div className="flex-1 relative rounded-2xl overflow-hidden">
-      {/* Photo layer — behind */}
-      <AnimatePresence>
-        {peeled && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="absolute inset-0 z-0 p-4"
+    <div className="flex-1 liquid-glass-tint rounded-2xl p-6 md:p-7 transition-all duration-500 group">
+      <div className="flex flex-wrap items-start justify-between gap-3 mb-3 relative z-10">
+        <div>
+          <h3 className="text-[20px] md:text-[22px] font-bold text-white font-manrope group-hover:text-blue-300 transition-colors duration-300">
+            {exp.company}
+          </h3>
+          <p className="text-[14px] text-white/50 font-inter-tight mt-0.5">
+            {exp.role}
+          </p>
+        </div>
+        <div className="flex items-center gap-2 flex-wrap">
+          {exp.tags.map((tag, ti) => (
+            <span
+              key={ti}
+              className="liquid-glass text-[11px] font-semibold px-3 py-1 rounded-full text-blue-200 font-inter-tight"
+              style={{
+                border: "1px solid rgba(147, 197, 253, 0.2)",
+              }}
+            >
+              <span className="relative z-10">{tag}</span>
+            </span>
+          ))}
+          <span className="text-[13px] text-white/50 font-medium font-inter-tight">
+            {exp.period}
+          </span>
+        </div>
+      </div>
+      <ul className="flex flex-col gap-2 mt-4 relative z-10">
+        {exp.description.map((item, j) => (
+          <li
+            key={j}
+            className="flex items-start gap-2.5 text-[14px] text-gray-300/70 font-inter-tight leading-relaxed"
           >
-            <div className="w-full h-full rounded-xl liquid-glass p-4 flex flex-col gap-3">
-              <div className="flex items-center justify-between relative z-10">
-                <span className="text-[13px] font-semibold text-white/60 font-inter-tight">
-                  {exp.company} — Photos
-                </span>
-                <button
-                  onClick={() => setPeeled(false)}
-                  className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
-                >
-                  <X size={14} className="text-white/70" />
-                </button>
-              </div>
-              <div className="grid grid-cols-3 gap-2 flex-1 relative z-10">
-                {exp.photos.map((photo, pi) => (
-                  <div
-                    key={pi}
-                    className={`rounded-lg bg-gradient-to-br ${photo.gradient} flex items-end p-2.5 min-h-[80px]`}
-                    style={{ border: "1px solid rgba(255,255,255,0.08)" }}
-                  >
-                    <span className="text-[11px] text-white/60 font-inter-tight leading-tight">
-                      {photo.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <p className="text-[11px] text-white/25 font-inter-tight text-center relative z-10">
-                Ajoutez vos photos dans le dossier public/
-              </p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-400/30 mt-2 shrink-0" />
+            {item}
+          </li>
+        ))}
+      </ul>
 
-      {/* Sticker layer — on top */}
-      <motion.div
-        animate={{
-          rotateX: peeled ? 90 : 0,
-          y: peeled ? -20 : 0,
-          opacity: peeled ? 0 : 1,
-          scale: peeled ? 0.95 : 1,
-        }}
-        transition={{
-          duration: 0.6,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-        style={{ transformOrigin: "top center", transformStyle: "preserve-3d" }}
-        className="liquid-glass-tint rounded-2xl p-6 md:p-7 transition-all duration-500 group relative"
-      >
-        {/* Peel corner */}
-        <button
-          onClick={() => setPeeled(!peeled)}
-          className="absolute bottom-0 right-0 z-20 cursor-pointer"
-          title="Voir les photos"
-        >
-          <div className="peel-corner">
-            <Camera size={12} className="absolute bottom-2 right-2 text-blue-300/60" />
-          </div>
-        </button>
-
-        <div className="flex flex-wrap items-start justify-between gap-3 mb-3 relative z-10">
-          <div>
-            <h3 className="text-[20px] md:text-[22px] font-bold text-white font-manrope group-hover:text-blue-300 transition-colors duration-300">
-              {exp.company}
-            </h3>
-            <p className="text-[14px] text-white/50 font-inter-tight mt-0.5">
-              {exp.role}
-            </p>
-          </div>
-          <div className="flex items-center gap-2 flex-wrap">
-            {exp.tags.map((tag, ti) => (
-              <span
-                key={ti}
-                className="liquid-glass text-[11px] font-semibold px-3 py-1 rounded-full text-blue-200 font-inter-tight"
-                style={{
-                  border: "1px solid rgba(147, 197, 253, 0.2)",
-                }}
-              >
-                <span className="relative z-10">{tag}</span>
-              </span>
-            ))}
-            <span className="text-[13px] text-white/50 font-medium font-inter-tight">
-              {exp.period}
+      {/* Photos directement visibles */}
+      <div className="grid grid-cols-3 gap-2 mt-5 relative z-10">
+        {exp.photos.map((photo, pi) => (
+          <div
+            key={pi}
+            className={`rounded-lg bg-gradient-to-br ${photo.gradient} flex items-end p-2.5 min-h-[70px] cursor-pointer hover:scale-[1.03] transition-transform duration-200`}
+            style={{ border: "1px solid rgba(255,255,255,0.08)" }}
+          >
+            <span className="text-[11px] text-white/60 font-inter-tight leading-tight">
+              {photo.label}
             </span>
           </div>
-        </div>
-        <ul className="flex flex-col gap-2 mt-4 relative z-10">
-          {exp.description.map((item, j) => (
-            <li
-              key={j}
-              className="flex items-start gap-2.5 text-[14px] text-gray-300/70 font-inter-tight leading-relaxed"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-400/30 mt-2 shrink-0" />
-              {item}
-            </li>
-          ))}
-        </ul>
-      </motion.div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -257,7 +199,6 @@ export default function Experiences() {
                   <div className="w-[10px] h-[10px] md:w-[12px] md:h-[12px] rounded-full bg-gradient-to-br from-blue-300 via-blue-400 to-cyan-300 mt-2 ring-4 ring-[#050505] shadow-[0_0_12px_rgba(96,165,250,0.5)]" />
                 </div>
 
-                {/* Card with peel effect */}
                 <ExperienceCard exp={exp} />
               </motion.div>
             ))}
