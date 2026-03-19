@@ -156,7 +156,7 @@ function ExperienceCard({ exp }: { exp: (typeof experiences)[0] }) {
           title="Voir les photos"
         >
           <div className="peel-corner">
-            <Camera size={18} className="absolute bottom-3 right-3 text-blue-300/80 drop-shadow-[0_0_6px_rgba(96,165,250,0.5)]" />
+            <Camera size={12} className="absolute bottom-2 right-2 text-blue-300/60" />
           </div>
         </button>
 

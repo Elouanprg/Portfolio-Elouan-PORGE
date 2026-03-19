@@ -211,47 +211,42 @@ body {
    PEEL CORNER EFFECT
    ============================================ */
 @keyframes peel-breathe {
-  0%, 100% { width: 60px; height: 60px; }
-  50% { width: 70px; height: 70px; }
-}
-
-@keyframes peel-glow {
-  0%, 100% { box-shadow: -2px -2px 12px rgba(96, 165, 250, 0.2), 0 0 20px rgba(96, 165, 250, 0.1); }
-  50% { box-shadow: -2px -2px 16px rgba(96, 165, 250, 0.4), 0 0 30px rgba(96, 165, 250, 0.2); }
+  0%, 100% { width: 44px; height: 44px; }
+  50% { width: 54px; height: 54px; }
 }
 
 .peel-corner {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 60px;
-  height: 60px;
+  width: 44px;
+  height: 44px;
   background: linear-gradient(
     135deg,
-    rgba(96, 165, 250, 0.3) 0%,
-    rgba(96, 165, 250, 0.15) 45%,
-    rgba(255, 255, 255, 0.15) 50%,
-    rgba(255, 255, 255, 0.3) 100%
+    rgba(96, 165, 250, 0.12) 0%,
+    rgba(96, 165, 250, 0.06) 45%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.15) 100%
   );
-  border-top-left-radius: 20px;
+  border-top-left-radius: 16px;
   clip-path: polygon(100% 0%, 0% 100%, 100% 100%);
-  animation: peel-breathe 4s ease-in-out infinite, peel-glow 3s ease-in-out infinite;
+  animation: peel-breathe 4s ease-in-out infinite;
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: -2px -2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .group:hover .peel-corner,
 .peel-corner:hover {
-  width: 85px;
-  height: 85px;
+  width: 64px;
+  height: 64px;
   animation: none;
   background: linear-gradient(
     135deg,
-    rgba(96, 165, 250, 0.4) 0%,
-    rgba(96, 165, 250, 0.2) 45%,
-    rgba(255, 255, 255, 0.2) 50%,
-    rgba(255, 255, 255, 0.35) 100%
+    rgba(96, 165, 250, 0.2) 0%,
+    rgba(96, 165, 250, 0.1) 45%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.2) 100%
   );
-  box-shadow: -3px -3px 20px rgba(96, 165, 250, 0.5), 0 0 40px rgba(96, 165, 250, 0.25);
 }
 
 .liquid-shimmer::before {
