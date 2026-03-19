@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section
       id="accueil"
-      className="relative z-10 flex flex-col items-center text-center pt-14 md:pt-14 pb-14 px-4 min-h-screen justify-center"
+      className="relative z-10 flex flex-col items-center text-center pt-14 md:pt-14 pb-6 px-4 min-h-screen justify-center"
     >
       {/* Photo with liquid glass frame */}
       <motion.div
