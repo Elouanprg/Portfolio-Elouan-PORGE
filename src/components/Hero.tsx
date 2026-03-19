@@ -12,7 +12,7 @@ export default function Hero() {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-        className="relative mb-10"
+        className="relative mb-6"
       >
         {/* Container — scaled down on mobile */}
         <div className="relative scale-[0.62] translate-x-2 sm:scale-[0.85] sm:translate-x-0 md:scale-100 origin-bottom" style={{ width: "412px", height: "494px" }}>
@@ -57,7 +57,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-        className="liquid-glass liquid-glass-interactive liquid-shimmer rounded-full px-5 py-2.5 mb-8 inline-flex items-center gap-2.5"
+        className="liquid-glass liquid-glass-interactive liquid-shimmer rounded-full px-5 py-2.5 mb-5 inline-flex items-center gap-2.5"
         style={{ border: "1px solid rgba(52, 211, 153, 0.15)", boxShadow: "0 0 12px rgba(52,211,153,0.15), 0 0 24px rgba(52,211,153,0.08)" }}
       >
         <span className="w-2.5 h-2.5 bg-emerald-400 rounded-full animate-pulse relative z-10" />
@@ -117,7 +117,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="flex flex-wrap items-center justify-center gap-4 mt-12"
+        className="flex flex-wrap items-center justify-center gap-4 mt-8"
       >
         <motion.a
           href="#contact"
@@ -147,13 +147,13 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-2 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ArrowDown size={20} className="text-white/20" />
+          <ArrowDown size={24} className="text-white/40" />
         </motion.div>
       </motion.div>
     </section>
