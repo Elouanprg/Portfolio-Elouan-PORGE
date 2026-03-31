@@ -14,9 +14,9 @@ const experiences = [
     ],
     tags: ["Stage"],
     photos: [
-      { gradient: "from-blue-500/20 to-violet-500/20", label: "Identité visuelle", image: "images/vibra/vibra-event.jpg" },
-      { gradient: "from-violet-500/20 to-pink-500/20", label: "Maquette Figma", image: "images/vibra/vibra-figma.jpg" },
       { gradient: "from-pink-500/20 to-orange-500/20", label: "Site internet", image: "images/vibra/vibra-site.png" },
+      { gradient: "from-violet-500/20 to-pink-500/20", label: "Maquette Figma", image: "images/vibra/vibra-figma.jpg" },
+      { gradient: "from-blue-500/20 to-violet-500/20", label: "Identité visuelle", image: "images/vibra/vibra-event.jpg" },
     ],
   },
   {
@@ -94,25 +94,26 @@ function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: ()
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
-        className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm cursor-pointer"
+        className="fixed inset-0 z-[9999] flex items-start justify-center pt-20 bg-black/80 backdrop-blur-sm cursor-pointer overflow-y-auto"
         onClick={onClose}
       >
-        <button
-          onClick={onClose}
-          className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors cursor-pointer"
-        >
-          <X size={20} className="text-white" />
-        </button>
-        <motion.img
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.9, opacity: 0 }}
-          transition={{ duration: 0.2 }}
-          src={src}
-          alt={alt}
-          className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl cursor-default"
-          onClick={(e) => e.stopPropagation()}
-        />
+        <div className="relative cursor-default" onClick={(e) => e.stopPropagation()}>
+          <button
+            onClick={onClose}
+            className="absolute -top-3 -right-3 z-10 w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center transition-colors cursor-pointer"
+          >
+            <X size={18} className="text-white" />
+          </button>
+          <motion.img
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            src={src}
+            alt={alt}
+            className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg shadow-2xl"
+          />
+        </div>
       </motion.div>
     </AnimatePresence>
   );
@@ -173,7 +174,7 @@ function ExperienceCard({ exp }: { exp: (typeof experiences)[0] }) {
             return (
               <div
                 key={pi}
-                className={`rounded-lg overflow-hidden bg-gradient-to-br ${photo.gradient} flex items-end min-h-[70px] cursor-pointer hover:scale-[1.03] transition-transform duration-200 relative`}
+                className={`rounded-lg overflow-hidden bg-gradient-to-br ${photo.gradient} flex items-end min-h-[120px] cursor-pointer hover:scale-[1.03] transition-transform duration-200 relative`}
                 style={{ border: "1px solid rgba(255,255,255,0.08)" }}
                 onClick={() => hasImage && setLightbox({ src: imageSrc, alt: photo.label })}
               >
