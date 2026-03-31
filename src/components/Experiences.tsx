@@ -13,9 +13,9 @@ const experiences = [
     ],
     tags: ["Stage"],
     photos: [
-      { gradient: "from-blue-500/20 to-violet-500/20", label: "Identité visuelle" },
-      { gradient: "from-violet-500/20 to-pink-500/20", label: "Maquette Figma" },
-      { gradient: "from-pink-500/20 to-orange-500/20", label: "Site internet" },
+      { gradient: "from-blue-500/20 to-violet-500/20", label: "Identité visuelle", image: "images/vibra/vibra-event.jpg" },
+      { gradient: "from-violet-500/20 to-pink-500/20", label: "Maquette Figma", image: "images/vibra/vibra-figma.jpg" },
+      { gradient: "from-pink-500/20 to-orange-500/20", label: "Site internet", image: "images/vibra/vibra-site.png" },
     ],
   },
   {
@@ -131,12 +131,25 @@ function ExperienceCard({ exp }: { exp: (typeof experiences)[0] }) {
         {exp.photos.map((photo, pi) => (
           <div
             key={pi}
-            className={`rounded-lg bg-gradient-to-br ${photo.gradient} flex items-end p-2.5 min-h-[70px] cursor-pointer hover:scale-[1.03] transition-transform duration-200`}
+            className={`rounded-lg overflow-hidden bg-gradient-to-br ${photo.gradient} flex items-end min-h-[70px] cursor-pointer hover:scale-[1.03] transition-transform duration-200 relative`}
             style={{ border: "1px solid rgba(255,255,255,0.08)" }}
           >
-            <span className="text-[11px] text-white/60 font-inter-tight leading-tight">
-              {photo.label}
-            </span>
+            {"image" in photo && photo.image ? (
+              <>
+                <img
+                  src={`${import.meta.env.BASE_URL}${photo.image}`}
+                  alt={photo.label}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                <span className="relative z-10 text-[11px] text-white font-inter-tight leading-tight p-2.5 w-full bg-gradient-to-t from-black/60 to-transparent">
+                  {photo.label}
+                </span>
+              </>
+            ) : (
+              <span className="text-[11px] text-white/60 font-inter-tight leading-tight p-2.5">
+                {photo.label}
+              </span>
+            )}
           </div>
         ))}
       </div>
