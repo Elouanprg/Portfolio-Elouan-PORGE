@@ -62,11 +62,7 @@ const experiences = [
       "Participation à des ventes aux enchères",
     ],
     tags: ["Stage"],
-    photos: [
-      { gradient: "from-sky-500/20 to-indigo-500/20", label: "Communication" },
-      { gradient: "from-indigo-500/20 to-purple-500/20", label: "Objets de vente" },
-      { gradient: "from-purple-500/20 to-sky-500/20", label: "Ventes aux enchères" },
-    ],
+    photos: [],
   },
 ];
 
