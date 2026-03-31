@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
-import { Briefcase } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Briefcase, X } from "lucide-react";
 
 const experiences = [
   {
@@ -85,75 +86,119 @@ const itemVariants = {
   },
 };
 
-function ExperienceCard({ exp }: { exp: (typeof experiences)[0] }) {
+function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
   return (
-    <div className="flex-1 liquid-glass-tint rounded-2xl p-6 md:p-7 transition-all duration-500 group">
-      <div className="flex flex-wrap items-start justify-between gap-3 mb-3 relative z-10">
-        <div>
-          <h3 className="text-[20px] md:text-[22px] font-bold text-white font-manrope group-hover:text-blue-300 transition-colors duration-300">
-            {exp.company}
-          </h3>
-          <p className="text-[14px] text-white/50 font-inter-tight mt-0.5">
-            {exp.role}
-          </p>
-        </div>
-        <div className="flex items-center gap-2 flex-wrap">
-          {exp.tags.map((tag, ti) => (
-            <span
-              key={ti}
-              className="liquid-glass text-[11px] font-semibold px-3 py-1 rounded-full text-blue-200 font-inter-tight"
-              style={{
-                border: "1px solid rgba(147, 197, 253, 0.2)",
-              }}
-            >
-              <span className="relative z-10">{tag}</span>
-            </span>
-          ))}
-          <span className="text-[13px] text-white/50 font-medium font-inter-tight">
-            {exp.period}
-          </span>
-        </div>
-      </div>
-      <ul className="flex flex-col gap-2 mt-4 relative z-10">
-        {exp.description.map((item, j) => (
-          <li
-            key={j}
-            className="flex items-start gap-2.5 text-[14px] text-gray-300/70 font-inter-tight leading-relaxed"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-400/30 mt-2 shrink-0" />
-            {item}
-          </li>
-        ))}
-      </ul>
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
+        className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm cursor-pointer"
+        onClick={onClose}
+      >
+        <button
+          onClick={onClose}
+          className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors cursor-pointer"
+        >
+          <X size={20} className="text-white" />
+        </button>
+        <motion.img
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.9, opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          src={src}
+          alt={alt}
+          className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl cursor-default"
+          onClick={(e) => e.stopPropagation()}
+        />
+      </motion.div>
+    </AnimatePresence>
+  );
+}
 
-      {/* Photos directement visibles */}
-      <div className="grid grid-cols-3 gap-2 mt-5 relative z-10">
-        {exp.photos.map((photo, pi) => (
-          <div
-            key={pi}
-            className={`rounded-lg overflow-hidden bg-gradient-to-br ${photo.gradient} flex items-end min-h-[70px] cursor-pointer hover:scale-[1.03] transition-transform duration-200 relative`}
-            style={{ border: "1px solid rgba(255,255,255,0.08)" }}
-          >
-            {"image" in photo && photo.image ? (
-              <>
-                <img
-                  src={`${import.meta.env.BASE_URL}${photo.image}`}
-                  alt={photo.label}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <span className="relative z-10 text-[11px] text-white font-inter-tight leading-tight p-2.5 w-full bg-gradient-to-t from-black/60 to-transparent">
-                  {photo.label}
-                </span>
-              </>
-            ) : (
-              <span className="text-[11px] text-white/60 font-inter-tight leading-tight p-2.5">
-                {photo.label}
-              </span>
-            )}
+function ExperienceCard({ exp }: { exp: (typeof experiences)[0] }) {
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
+
+  return (
+    <>
+      {lightbox && (
+        <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />
+      )}
+      <div className="flex-1 liquid-glass-tint rounded-2xl p-6 md:p-7 transition-all duration-500 group">
+        <div className="flex flex-wrap items-start justify-between gap-3 mb-3 relative z-10">
+          <div>
+            <h3 className="text-[20px] md:text-[22px] font-bold text-white font-manrope group-hover:text-blue-300 transition-colors duration-300">
+              {exp.company}
+            </h3>
+            <p className="text-[14px] text-white/50 font-inter-tight mt-0.5">
+              {exp.role}
+            </p>
           </div>
-        ))}
+          <div className="flex items-center gap-2 flex-wrap">
+            {exp.tags.map((tag, ti) => (
+              <span
+                key={ti}
+                className="liquid-glass text-[11px] font-semibold px-3 py-1 rounded-full text-blue-200 font-inter-tight"
+                style={{
+                  border: "1px solid rgba(147, 197, 253, 0.2)",
+                }}
+              >
+                <span className="relative z-10">{tag}</span>
+              </span>
+            ))}
+            <span className="text-[13px] text-white/50 font-medium font-inter-tight">
+              {exp.period}
+            </span>
+          </div>
+        </div>
+        <ul className="flex flex-col gap-2 mt-4 relative z-10">
+          {exp.description.map((item, j) => (
+            <li
+              key={j}
+              className="flex items-start gap-2.5 text-[14px] text-gray-300/70 font-inter-tight leading-relaxed"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-400/30 mt-2 shrink-0" />
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        {/* Photos directement visibles */}
+        <div className="grid grid-cols-3 gap-2 mt-5 relative z-10">
+          {exp.photos.map((photo, pi) => {
+            const hasImage = "image" in photo && photo.image;
+            const imageSrc = hasImage ? `${import.meta.env.BASE_URL}${photo.image}` : "";
+            return (
+              <div
+                key={pi}
+                className={`rounded-lg overflow-hidden bg-gradient-to-br ${photo.gradient} flex items-end min-h-[70px] cursor-pointer hover:scale-[1.03] transition-transform duration-200 relative`}
+                style={{ border: "1px solid rgba(255,255,255,0.08)" }}
+                onClick={() => hasImage && setLightbox({ src: imageSrc, alt: photo.label })}
+              >
+                {hasImage ? (
+                  <>
+                    <img
+                      src={imageSrc}
+                      alt={photo.label}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <span className="relative z-10 text-[11px] text-white font-inter-tight leading-tight p-2.5 w-full bg-gradient-to-t from-black/60 to-transparent">
+                      {photo.label}
+                    </span>
+                  </>
+                ) : (
+                  <span className="text-[11px] text-white/60 font-inter-tight leading-tight p-2.5">
+                    {photo.label}
+                  </span>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

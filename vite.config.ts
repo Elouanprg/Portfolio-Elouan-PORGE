@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  base: '/Portfolio-Elouan-PORGE/',
+  base: './',
   plugins: [react(), tailwindcss()],
   server: {
     port: 8080,
