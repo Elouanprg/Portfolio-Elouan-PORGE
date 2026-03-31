@@ -30,9 +30,9 @@ const experiences = [
     ],
     tags: ["Projet"],
     photos: [
-      { gradient: "from-emerald-500/20 to-cyan-500/20", label: "Communication" },
-      { gradient: "from-cyan-500/20 to-blue-500/20", label: "Eye Tracking" },
-      { gradient: "from-blue-500/20 to-emerald-500/20", label: "Analyse" },
+      { gradient: "from-emerald-500/20 to-cyan-500/20", label: "Communication", image: "images/eyetracking/communication.jpg" },
+      { gradient: "from-cyan-500/20 to-blue-500/20", label: "Eye Tracking", image: "images/eyetracking/tobii-pro.png" },
+      { gradient: "from-blue-500/20 to-emerald-500/20", label: "Analyse", image: "images/eyetracking/heatmap.png" },
     ],
   },
   {
