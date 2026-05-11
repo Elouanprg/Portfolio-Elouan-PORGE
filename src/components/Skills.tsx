@@ -64,7 +64,7 @@ const tools = [
       </svg>
     ),
     detail:
-      "Développement responsive du site vibra-events.com, automatisations et création de maquettes de SaaS.",
+      "Développement du site vibra-events.com, gestion responsive, automatisations et création de maquettes de SaaS.",
   },
   {
     name: "Figma",
