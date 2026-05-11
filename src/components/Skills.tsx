@@ -64,7 +64,7 @@ const tools = [
       </svg>
     ),
     detail:
-      "Développement du site vibra-events.com, automatisations et création de maquettes de SaaS.",
+      "Développement responsive du site vibra-events.com, automatisations et création de maquettes de SaaS.",
   },
   {
     name: "Figma",
@@ -91,7 +91,7 @@ const tools = [
       </svg>
     ),
     detail:
-      "Création de visuels pour réseaux sociaux, affiches promotionnelles, supports de communication.",
+      "Création de visuels pour les réseaux sociaux professionnels, affiches promotionnelles, supports de communication.",
   },
   {
     name: "Photoshop",
@@ -102,7 +102,7 @@ const tools = [
       </svg>
     ),
     detail:
-      "Retouche photo, détourage d'images produit, création de montages pour les réseaux sociaux.",
+      "Retouche photo, détourage d'images produit, création de montages.",
   },
   {
     name: "Premiere Pro",
@@ -113,7 +113,7 @@ const tools = [
       </svg>
     ),
     detail:
-      "Montage de vidéos promotionnelles, contenus pour réseaux sociaux, teasers événementiels.",
+      "Utilisation basique pour des montages vidéo.",
   },
   {
     name: "WordPress",
@@ -126,7 +126,7 @@ const tools = [
       </svg>
     ),
     detail:
-      "Développement et mise en ligne de sites internet, gestion de contenu, optimisation SEO.",
+      "Développement et mise en ligne de sites internet responsive, gestion de contenu, optimisation SEO.",
   },
   {
     name: "Excel",
