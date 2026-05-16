@@ -28,7 +28,7 @@ const skills = [
   },
   {
     icon: Zap,
-    label: "Communication",
+    label: "Communication digitale",
     desc: "Réseaux sociaux & contenus",
     color: "text-amber-400",
   },
@@ -139,7 +139,7 @@ const tools = [
       </svg>
     ),
     detail:
-      "Tableaux de bord, analyses de données commerciales, suivi de ventes et statistiques.",
+      "Maîtrise des tableaux croisés dynamiques, formules et graphiques. Tableaux de bord, analyses de données commerciales, suivi de ventes et statistiques.",
   },
   {
     name: "Word",

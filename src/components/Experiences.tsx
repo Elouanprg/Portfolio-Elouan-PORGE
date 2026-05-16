@@ -5,12 +5,12 @@ import { Briefcase, X } from "lucide-react";
 const experiences = [
   {
     company: "VIBRA",
-    role: "Stage — Agence évènementielle",
+    role: "Web Designer · Stage — Agence évènementielle",
     period: "Janv. 2026 → Fév. 2026",
     description: [
       "Création de l'identité visuelle de l'entreprise",
-      "Conception d'une maquette de site internet sur Figma",
-      "Développement et mise en ligne du site internet",
+      "Conception d'une maquette et d'un wireframe sur Figma",
+      "Développement, mise en ligne et SEO du site internet",
     ],
     tags: ["Stage"],
     photos: [
@@ -21,7 +21,7 @@ const experiences = [
   },
   {
     company: "Projet Eye Tracking",
-    role: "Projet tuteuré — IUT de Bordeaux",
+    role: "Co-gestionnaire · Projet tuteuré — IUT de Bordeaux",
     period: "Sept. 2025 → Juin 2026",
     description: [
       "Communication sur les réseaux sociaux et affiches",
@@ -37,7 +37,7 @@ const experiences = [
   },
   {
     company: "Creta Quad Safari",
-    role: "Stage — Crète, Grèce",
+    role: "Chargé de communication digitale · Stage — Crète, Grèce",
     period: "Juin 2025 → Juil. 2025",
     description: [
       "Communication sur les réseaux sociaux",
@@ -53,7 +53,7 @@ const experiences = [
   },
   {
     company: "Maître Baratoux",
-    role: "Stage — Hôtel des ventes",
+    role: "Chargé de communication digitale · Stage — Hôtel des ventes",
     period: "Janv. 2025",
     description: [
       "Communication sur Instagram, Mail et LinkedIn",
