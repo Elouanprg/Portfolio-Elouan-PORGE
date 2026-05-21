@@ -26,13 +26,14 @@ const experiences = [
     description: [
       "Communication sur les réseaux sociaux et affiches",
       "Création et mise en place d'un protocole Eye Tracking",
+      "Collaboration avec Prolians (grande enseigne nationale, +350 agences en France) pour réaliser une étude en magasin",
       "Rédaction et analyse des résultats sous forme d'étude",
     ],
     tags: ["Projet"],
     photos: [
       { gradient: "from-emerald-500/20 to-cyan-500/20", label: "Communication", image: "images/eyetracking/communication.jpg" },
-      { gradient: "from-cyan-500/20 to-blue-500/20", label: "Eye Tracking", image: "images/eyetracking/tobii-pro.png" },
-      { gradient: "from-blue-500/20 to-emerald-500/20", label: "Analyse", image: "images/eyetracking/heatmap.png" },
+      { gradient: "from-cyan-500/20 to-blue-500/20", label: "Collaboration Prolians", image: "images/eyetracking/prolians-equipe.jpg" },
+      { gradient: "from-blue-500/20 to-emerald-500/20", label: "Analyse", image: "images/eyetracking/prolians-analyse.jpg" },
     ],
   },
   {
@@ -45,11 +46,7 @@ const experiences = [
       "Sécurité, traduction et accompagnement",
     ],
     tags: ["Stage", "International"],
-    photos: [
-      { gradient: "from-amber-500/20 to-orange-500/20", label: "Réseaux sociaux" },
-      { gradient: "from-orange-500/20 to-red-500/20", label: "Clients internationaux" },
-      { gradient: "from-red-500/20 to-amber-500/20", label: "Accompagnement" },
-    ],
+    photos: [],
   },
   {
     company: "Maître Baratoux",
